@@ -21,6 +21,10 @@ class Profesion
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
+        /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="profesiones")
+     */
+    private $user;
 
     public function getId(): ?int
     {

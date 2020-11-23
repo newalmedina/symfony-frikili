@@ -41,6 +41,18 @@ class Posts
      * @ORM\Column(type="text")
      */
     private $contenido;
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="posts")
+     */
+    private $user;
+
+     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comentarios", mappedBy="posts")
+     */
+    private $comentarios;
+    
+    
+    
 
     public function getId(): ?int
     {

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -42,6 +44,27 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Profesion", mappedBy="user")
+     */
+    private $profesiones;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comentarios", mappedBy="user")
+     */
+    private $comentarios;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="user")
+     */
+    private $posts;
+    
+   
+   
+
+    public function __construct()
+    {
+        $this->pottes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -148,4 +171,6 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+ 
 }
